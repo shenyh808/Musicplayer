@@ -11,7 +11,6 @@ class Playlist
 
         end
         save 
-
     end
 
     def save
@@ -21,6 +20,10 @@ class Playlist
     def genres
         Genre.all select {|genre| genre.playlist == self}
 
+    end
+
+    def songs
+        Song.all select {|song| song.paylist == self}
     end
 
     def self.find_by_id(id)

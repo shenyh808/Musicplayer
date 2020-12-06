@@ -1,6 +1,6 @@
 class Artist
 
-    attr_accessor :songs, :name, 
+    attr_accessor :songs, :name
 
     def initialize(hash) #with metaprogramming
         hash.each do |key, value|

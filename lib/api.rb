@@ -13,6 +13,8 @@ class API
         response = http.request(req)
         artist = JSON(response.body)["artist"]
         Artist.find_or_create(artist)
+
+        binding.pry
     end
 
     def self.find_by_playlist(playlist)
@@ -24,74 +26,32 @@ class API
         response = http.request(req)
         playlist = JSON(response.body)["playlist"]
         Playlist.find_or_create(playlist)
+
     end
 
     def self.browse 
         uri = URI ("https://api.spotify.com/v1/browse/categories")
-        uri = URI(URL)
         req = Net::HTTP::Get.new(uri)
         req['Authorization'] = "Bearer #{token}" 
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = (uri.scheme == "https")
         response = http.request(req)
         browse = JSON(response.body)["browse"]
+        Browse.find_or_create(browse)
     end
 
-    def self.playlist(christmas)
-        uri = URI https://api.spotify.com/v1/playlists/{4gxWLVXrcqc3SngxmwxxvH}
-        uri = URI(URL)
+    def self.find_playlist_by_id(id)
+        uri = URI("https://api.spotify.com/v1/playlists/#{id}")
         req = Net::HTTP::Get.new(uri)
         req['Authorization'] = "Bearer #{token}" 
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = (uri.scheme == "https")
         response = http.request(req)
-        christmas JSON(response.body)["christmas"]
+        playlist = JSON(response.body)["id"]
+        binding.pry
+        Playlist.find_or_create(id)
     end
 
-    def self.playlist(classic_rock)
-        uri = URI https://api.spotify.com/v1/playlists/{4fjIBk8D6FXUeRwlRNE2Zg}
-        uri = URI(URL)
-        req = Net::HTTP::Get.new(uri)
-        req['Authorization'] = "Bearer #{token}" 
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = (uri.scheme == "https")
-        response = http.request(req)
-        classic_rock JSON(response.body)["classic_rock"]
-    end
-
-    def self.playlist(workout)
-        uri = URI https://api.spotify.com/v1/playlists/{4E0tTH3iH1hGMLJ0MMo4dv}
-        uri = URI(URL)
-        req = Net::HTTP::Get.new(uri)
-        req['Authorization'] = "Bearer #{token}" 
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = (uri.scheme == "https")
-        response = http.request(req)
-        workout JSON(response)["workout"]
-    end
-
-    def self.playlist(disney_hits)
-        uri = URI https://api.spotify.com/v1/playlists/{7AX97ePWr5Onf0kDazTeGt}
-        uri = URI(URL)
-        req = Net::HTTP::Get.new(uri)
-        req['Authorization'] = "Bearer #{token}" 
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = (uri.scheme == "https")
-        response = http.request(req)
-        disney_hits JSON(response.body)["disney_hits"]
-    end
-
-    def self.playlist(top_hits)
-        uri = URI https://api.spotify.com/v1/playlists/{7v5KjTAPt7QbxC1nPMpJnk}
-        uri = URI(URL)
-        req = Net::HTTP::Get.new(uri)
-        req['Authorization'] = "Bearer #{token}" 
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = (uri.scheme == "https")
-        response = http.request(req)
-        top_hits JSON(response.body)["top_hits"]
-    end
-    binding.pry 
 end
 
 API.CLI
