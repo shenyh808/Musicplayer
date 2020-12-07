@@ -1,6 +1,6 @@
 class Song
 
-    def self.find_by_id(id)
+    def self.find_song_by_id(id)
         all.find {|song| song.id == id}
     end
 

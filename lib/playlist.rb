@@ -23,7 +23,7 @@ class Playlist
     end
 
     def songs
-        Song.all select {|song| song.paylist == self}
+        Song.all select {|song| song.playlist == self}
     end
 
     def self.find_by_id(id)

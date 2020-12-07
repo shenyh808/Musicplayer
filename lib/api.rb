@@ -52,9 +52,20 @@ class API
         Playlist.find_or_create(id)
     end
 
+    def self.find_song_by_id(song)
+        uri = URI("https://api.spotify.com/v1/tracks/#{id}")
+        req = Net::HTTP::Get.new(uri)
+        req['Authorization'] = "Bearer #{token}" 
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = (uri.scheme == "https")
+        response = http.request(req)
+        playlist = JSON(response.body)["id"]
+        Song.find_or_create(id)
+    end
+  
+
 end
 
-API.CLI
 
 
 
