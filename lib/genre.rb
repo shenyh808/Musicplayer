@@ -9,16 +9,12 @@ class Genre
         save 
     end
 
-    def browse
-        browse.all {|browse| browse.genre == self}
-    end
-
     def playlists
-        playlist.all {|playlist| playlist.genre == self}
+        Playlist.all {|playlist| playlist.genre == self}
     end
 
     def self.find_by_id(id)
-        all.find {|genre| song.id == id}
+        all.find {|genre| genre.id == id}
     end
 
     def self.find_or_create(hash)

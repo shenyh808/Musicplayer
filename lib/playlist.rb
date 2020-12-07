@@ -18,12 +18,12 @@ class Playlist
     end
 
     def genres
-        Genre.all select {|genre| genre.playlist == self}
+        Genre.all.select {|genre| genre.playlist == self}
 
     end
 
     def songs
-        Song.all select {|song| song.playlist == self}
+        Song.all.select {|song| song.playlist == self}
     end
 
     def self.find_by_id(id)
@@ -37,9 +37,6 @@ class Playlist
     def self.all 
         @@all 
     end
-
-
-    
 
 end
  

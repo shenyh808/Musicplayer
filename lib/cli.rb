@@ -7,6 +7,7 @@ class CLI
         user_greeting
         playlist_you_might_like
         playlist_selection
+        goodbye
     end 
 
     def user_greeting
@@ -18,7 +19,7 @@ class CLI
     end
 
     def playlist_selection
-        puts "select the number that you are interested in"
+        puts "Select the number that you are interested in"
         input = gets.strip
 
         if (1..PLAYLISTS.length).include?(input)
@@ -34,6 +35,26 @@ class CLI
         end
 
     end
+
+
+    # def choice 
+    #     if play_song
+    #         play 
+    #     else 
+    #         find_artist_by_id
+    #         artist
+    #     else 
+    #         goodbye 
+    #     end
+    # end
+            #Question: after playlist selection.. can either play song or go to artist. 
+            
+
+    def goodbye 
+        puts "Thanks for joining us! Have a good one!"
+    end
+
+
 
 end
 

@@ -1,7 +1,5 @@
 class Artist
 
-    attr_accessor :songs, :name
-
     def initialize(hash) #with metaprogramming
         hash.each do |key, value|
             self.class.attr_accessor key
@@ -10,8 +8,12 @@ class Artist
         save
     end
 
-    def self.find_by_id(id)
+    def self.find_artist_by_id(id)
         all.find {|artist| artist.id == id}
+    end
+
+    def songs 
+        Song.all.select {|song| song.artist == self}
     end
 
     def self.find_or_create(hash) #maybe we can just call it self.find_or_create
