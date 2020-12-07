@@ -7,6 +7,7 @@ class CLI
         user_greeting
         playlist_you_might_like
         playlist_selection
+        display_songs
         goodbye
     end 
 
@@ -14,27 +15,34 @@ class CLI
         puts "Welcome, Play your favorite songs now!"
     end
 
-    def playlist_you_might_like(playlist)
-        PLAYLISTS.keys.each.with_index {|key, i| puts "#{i}. #{key}"}
+    def playlist_you_might_like
+        PLAYLISTS.keys.each.with_index(1) {|key, i| puts "#{i}. #{key}"}
     end
 
     def playlist_selection
         puts "Select the number that you are interested in"
         input = gets.strip
 
-        if (1..PLAYLISTS.length).include?(input)
+        if (1..PLAYLISTS.length).include?(input.to_i)
             keys = PLAYLISTS.keys
-            name = keys[input]
+            name = keys[input.to_i - 1]
             id = PLAYLISTS[name]
-            API.find_playlist_by_id(id)
+            @songs = API.find_playlist_by_id(id)
 
         else 
-            puts "Wrong input, please type a number between 1-#{PLAYLIST.length}"
+            puts "Wrong input, please type a number between 1-#{PLAYLISTS.length}"
             playlist_selection #recursion 
 
         end
 
     end
+
+    def display_songs
+        @songs.each.with_index(1) {|song, i| puts "#{i}. #{song.name}"}
+    end
+
+    type the song you want (title, artist, popularity)
+
 
 
     # def choice 
