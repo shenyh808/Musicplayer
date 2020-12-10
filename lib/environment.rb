@@ -2,6 +2,7 @@ require 'net/http'
 require 'json'
 require 'pry'
 require 'dotenv/load'
+require 'colorize'
 
 require_relative "./api"
 require_relative "./artist"

@@ -26,12 +26,12 @@ class Playlist
         Song.all.select {|song| song.playlist == self}
     end
 
-    def self.find_by_id(id)
+    def self.find_playlist_by_id(id)
         all.find {|playlist| playlist.id == id}
     end
 
-    def self.find_or_create(hash) #maybe we can just call it self.find_or_create
-        find_by_id(hash["id"]) || new(hash)
+    def self.find_or_create(hash)
+        find_playlist_by_id(hash["id"]) || new(hash)
     end
 
     def self.all 

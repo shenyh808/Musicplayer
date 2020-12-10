@@ -8,11 +8,21 @@ class CLI
         playlist_you_might_like
         playlist_selection
         display_songs
-        goodbye
+        song_selection
+        display_info
     end 
 
     def user_greeting
-        puts "Welcome, Play your favorite songs now!"
+        puts "                           Welcome, Play your favorite songs now!".red.bold
+        puts "
+            ___|\\_______|________|_______________________O__________@____________
+            ___|/_______|________|_|___|__________|__@__|_____@__|_|____O.______||
+            __/|____4___|__O_____|_|___|__O.______|_|@__|____|___|_|___|O._____o||
+            _(_/^\\__4__@|_|_____@__|___|_|________|_|@__|____|___|_|___|_______o||
+            __\\|/'_____@__|________|__@|_|________|_|________|___|_____|________||
+               d          |           @  |          |"
+        puts ""
+
     end
 
     def playlist_you_might_like
@@ -27,42 +37,65 @@ class CLI
             keys = PLAYLISTS.keys
             name = keys[input.to_i - 1]
             id = PLAYLISTS[name]
-            @songs = API.find_playlist_by_id(id)
-
+            @playlist = API.find_playlist_by_id(id)
+            @songs = Song.all
+        
         else 
             puts "Wrong input, please type a number between 1-#{PLAYLISTS.length}"
             playlist_selection #recursion 
-
         end
 
     end
 
     def display_songs
         @songs.each.with_index(1) {|song, i| puts "#{i}. #{song.name}"}
+
     end
 
-    type the song you want (title, artist, popularity)
+    def song_selection 
+        puts "type a number you'd like to select"
+        input = gets.strip.to_i
+        @song = @songs[input -1]
+        display_song
+    end
+
+    def display_song
+        puts @song.artist
+        puts @song.name
+        puts @song.album
+        puts @song.popularity
+        puts @song.genre
+        puts @song.duration
+    end
 
 
+    # def display_info
+        
+    #     API.find_artist_by_name 
 
-    # def choice 
-    #     if play_song
-    #         play 
-    #     else 
-    #         find_artist_by_id
-    #         artist
-    #     else 
-    #         goodbye 
-    #     end
+        # if input == back
+        #       song_selection
+
+        # else input == playlist
+    #         playlist_selection
+
+    #     else input == exit
+    #         goodbye
+        # elsif 
+            # playlist_selection
+        #   end
+
     # end
-            #Question: after playlist selection.. can either play song or go to artist. 
-            
+
+        # Artist.find_or_create({id: song_hash["track"]["id"], name: song_hash["track"]["name"], popularity:song_hash["track"]["popularity"], playlist:playlist})
+        # ["artists"], ["track"]["id"], ["track"]["popularity"]
+    #{"title", "artist", "popularity"}
+    #the song with (title, artist, popularity)
+
 
     def goodbye 
-        puts "Thanks for joining us! Have a good one!"
+        puts "Thanks for listening! Have a good one!"
     end
-
-
 
 end
 

@@ -1,3 +1,5 @@
+require "pry"
+
 class Song
     attr_accessor :artist, :playlist, :genre
 
@@ -12,12 +14,13 @@ class Song
         save 
     end
 
-    def self.find_by_id(id)
+    def self.find_song_by_id(id)
         all.find {|song| song.id == id}
     end
 
-    def self.find_or_create(hash) #maybe we can just call it self.find_or_create
-        find_by_id(hash["id"]) || new(hash)
+    def self.find_or_create(hash)
+        
+        find_song_by_id(hash["id"]) || new(hash)
     end
 
     def self.all 
@@ -27,7 +30,5 @@ class Song
     def save
         self.class.all << self
     end
-
-    # def play_song ?? How would I do this? Youtube? or Spotify ?
 
 end
