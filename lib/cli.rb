@@ -9,19 +9,28 @@ class CLI
         playlist_selection
         display_songs
         song_selection
-        display_info
+        display_song
+        display #what is the difference between these two. 
+        goodbye
     end 
 
     def user_greeting
-        puts "                           Welcome, Play your favorite songs now!".red.bold
+
         puts "
-            ___|\\_______|________|_______________________O__________@____________
-            ___|/_______|________|_|___|__________|__@__|_____@__|_|____O.______||
-            __/|____4___|__O_____|_|___|__O.______|_|@__|____|___|_|___|O._____o||
-            _(_/^\\__4__@|_|_____@__|___|_|________|_|@__|____|___|_|___|_______o||
-            __\\|/'_____@__|________|__@|_|________|_|________|___|_____|________||
-               d          |           @  |          |"
+                                        █░█░█ █▀▀ █░░ █▀▀ █▀█ █▀▄▀█ █▀▀
+                                        ▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █░▀░█ ██▄".red
+
+        puts "
+                        ___|\\_______|________|_______________________O__________@____________
+                        ___|/_______|________|_|___|__________|__@__|_____@__|_|____O.______||
+                        __/|____4___|__O_____|_|___|__O.______|_|@__|____|___|_|___|O._____o||
+                        _(_/^\\__4__@|_|_____@__|___|_|________|_|@__|____|___|_|___|_______o||
+                        __\\|/'_____@__|________|__@|_|________|_|________|___|_____|________||
+                        d          |           @  |          |".bold
         puts ""
+        puts "
+        █▀█ █░░ ▄▀█ █▄█   █▄█ █▀█ █░█ █▀█   █▀▀ ▄▀█ █░█ █▀█ █▀█ █ ▀█▀ █▀▀   █▀ █▀█ █▄░█ █▀▀ █▀   █▄░█ █▀█ █░█░█ █
+        █▀▀ █▄▄ █▀█ ░█░   ░█░ █▄█ █▄█ █▀▄   █▀░ █▀█ ▀▄▀ █▄█ █▀▄ █ ░█░ ██▄   ▄█ █▄█ █░▀█ █▄█ ▄█   █░▀█ █▄█ ▀▄▀▄▀ ▄".green
 
     end
 
@@ -30,7 +39,7 @@ class CLI
     end
 
     def playlist_selection
-        puts "Select the number that you are interested in"
+        puts "Select the corresponding number for the playlist...".blue.bold
         input = gets.strip
 
         if (1..PLAYLISTS.length).include?(input.to_i)
@@ -39,9 +48,8 @@ class CLI
             id = PLAYLISTS[name]
             @playlist = API.find_playlist_by_id(id)
             @songs = Song.all
-        
         else 
-            puts "Wrong input, please type a number between 1-#{PLAYLISTS.length}"
+            puts "Oops, an error has occurred... Please type a number between 1-#{PLAYLISTS.length}".red.bold
             playlist_selection #recursion 
         end
 
@@ -53,48 +61,73 @@ class CLI
     end
 
     def song_selection 
-        puts "type a number you'd like to select"
+        puts "Select the number corresponding to the song you want...".blue.bold
         input = gets.strip.to_i
-        @song = @songs[input -1]
-        display_song
+        if @song = @songs[input -1]
+            # display_song
+
+        else
+            puts "Invalid input, please try again...".red.bold
+            song_selection
+           
+        end
     end
 
     def display_song
-        puts @song.artist
-        puts @song.name
-        puts @song.album
-        puts @song.popularity
-        puts @song.genre
-        puts @song.duration
+        puts "Name: #{@song.name}".red
+        puts "Artist: #{@song.artist.name}".green
+        puts "Album: #{@song.album["name"]}".blue
+        puts "Popularity: #{@song.popularity.to_s + "/100"}".red
+        puts "Genre: #{@song.artist.genres}".green
+        puts "Followers: #{@song.artist.followers}".blue
+        puts "Duration: #{@song.duration}".red
+        puts ""
+        display
     end
 
 
-    # def display_info
-        
-    #     API.find_artist_by_name 
+    def display
+        puts "Type 'back' to go to song selection".blue
+        puts "Type 'playlist' to go to playlist".blue
+        puts "Type 'exit' to exit".red
+        input = gets.strip.downcase
 
-        # if input == back
-        #       song_selection
+        if input == "exit"
+            goodbye
 
-        # else input == playlist
-    #         playlist_selection
 
-    #     else input == exit
-    #         goodbye
-        # elsif 
-            # playlist_selection
-        #   end
+        elsif input == "back"
+            display_songs
+            song_selection
 
-    # end
+        elsif input == "playlist"
+            playlist_you_might_like
+            playlist_selection
+            # display_songs
+        #     song_selection
+        #     display_song
 
-        # Artist.find_or_create({id: song_hash["track"]["id"], name: song_hash["track"]["name"], popularity:song_hash["track"]["popularity"], playlist:playlist})
-        # ["artists"], ["track"]["id"], ["track"]["popularity"]
-    #{"title", "artist", "popularity"}
-    #the song with (title, artist, popularity)
+        else input =
+            puts "Hmm.. Unfortunately, that was invalid.. Please try again.."
+            display
 
+        end
+    end
 
     def goodbye 
-        puts "Thanks for listening! Have a good one!"
+        puts ""
+        puts "
+        ▀█▀ █░█ ▄▀█ █▄░█ █▄▀ █▀   █▀▀ █▀█ █▀█   █░░ █ █▀ ▀█▀ █▀▀ █▄░█ █ █▄░█ █▀▀ █
+        ░█░ █▀█ █▀█ █░▀█ █░█ ▄█   █▀░ █▄█ █▀▄   █▄▄ █ ▄█ ░█░ ██▄ █░▀█ █ █░▀█ █▄█ ▄".blue
+        puts "
+                                ██████──██
+                                ─██████████─────▄─▄─▄
+                                ──███O▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+                                ───████████─────▀─▀─▀
+                                ────██──██".red
+        puts "
+                █░█ ▄▀█ █░█ █▀▀   ▄▀█   █▀▀ █▀█ █▀█ █▀▄   █▀█ █▄░█ █▀▀ █
+                █▀█ █▀█ ▀▄▀ ██▄   █▀█   █▄█ █▄█ █▄█ █▄▀   █▄█ █░▀█ ██▄ ▄".blue
     end
 
 end

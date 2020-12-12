@@ -1,7 +1,7 @@
 require "pry"
 
 class Song
-    attr_accessor :artist, :playlist, :genre
+    attr_accessor :artist, :playlist, :genre, :followers, :duration, :album, :popularity
 
     @@all = []
 
@@ -19,7 +19,6 @@ class Song
     end
 
     def self.find_or_create(hash)
-        
         find_song_by_id(hash["id"]) || new(hash)
     end
 
