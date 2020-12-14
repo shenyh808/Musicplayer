@@ -23,6 +23,7 @@ Or install it yourself as:
 ## Usage
 
 TODO: Write usage instructions here
+git clone down to ./bin/start 
 
 ## Development
 

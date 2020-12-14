@@ -5,7 +5,7 @@ class API
     
     def self.api_call(url)
         # token = ""
-        token = "BQDnnPz9QsUkmEUFIZyGgaPBtdxDNWRLliMKH-4wzd5M2WAGSxqMEDWAm-3WFn5X-9f3KI6WshJXCEL0IihgzZ-h9q_EHBHRv_ygx7pJ_tXBIB7a4nL6teUgN6RA5TxknZr52N1D0wbI68HM2TvwLIx2BXM6LasgDEQ4wPaXT6toRvE"
+        token = "BQDUgzpnF7twigR6d0RV_2g_hVgNFrkowDSYR0lB6yqv6OGZvAhckEbRYCcB5ejtILDEQ5yq-Q6L4J4EUSGVQdwrrUhe15qcyBivUzpf7DApM9stZ8ggAo_Hz2faRGyFAjqzllSsRKurTb1p9N6Z2Ru97EHg5XJoVznLcdgbvJmCdlE"
         uri = URI(url)
         req = Net::HTTP::Get.new(uri)
         req['Authorization'] = "Bearer #{token}" 
@@ -18,7 +18,7 @@ class API
     def self.find_artist_by_name(name)
         response = api_call("https://api.spotify.com/v1/search?q=#{name}&type=artist")
         artist = JSON(response.body)["artist"]
-        binding.pry
+       
             Artist.find_or_create({name: artist["name"], id: ["track"]["id"], songs: ["track"]["name"], popularity: ["track"]["popularity"], playlist:playlist})
       
     end

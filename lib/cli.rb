@@ -10,8 +10,8 @@ class CLI
         display_songs
         song_selection
         display_song
-        display #what is the difference between these two. 
-        goodbye
+        # display #what is the difference between these two. 
+        # goodbye
     end 
 
     def user_greeting
@@ -62,15 +62,17 @@ class CLI
 
     def song_selection 
         puts "Select the number corresponding to the song you want...".blue.bold
-        input = gets.strip.to_i
-        if @song = @songs[input -1]
-            # display_song
+        input= gets.strip.to_i
+        
+        if  input.to_i.between?(1,@songs.length) && @song = @songs[input -1]
+               display_song
 
-        else
+        else 
             puts "Invalid input, please try again...".red.bold
             song_selection
            
         end
+        
     end
 
     def display_song
@@ -103,12 +105,12 @@ class CLI
         elsif input == "playlist"
             playlist_you_might_like
             playlist_selection
-            # display_songs
-        #     song_selection
-        #     display_song
+            display_songs
+            song_selection
+            display_song
 
         else input =
-            puts "Hmm.. Unfortunately, that was invalid.. Please try again.."
+            puts "Hmm.. Unfortunately, that was invalid.. Please try again..".red
             display
 
         end
@@ -128,6 +130,7 @@ class CLI
         puts "
                 █░█ ▄▀█ █░█ █▀▀   ▄▀█   █▀▀ █▀█ █▀█ █▀▄   █▀█ █▄░█ █▀▀ █
                 █▀█ █▀█ ▀▄▀ ██▄   █▀█   █▄█ █▄█ █▄█ █▄▀   █▄█ █░▀█ ██▄ ▄".blue
+        exit(true)
     end
 
 end

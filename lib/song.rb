@@ -1,7 +1,6 @@
 require "pry"
 
 class Song
-    attr_accessor :artist, :playlist, :genre, :followers, :duration, :album, :popularity
 
     @@all = []
 

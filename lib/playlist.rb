@@ -1,7 +1,5 @@
 class Playlist
 
-    attr_accessor :name
-
     @@all = []
 
     def initialize(hash)
