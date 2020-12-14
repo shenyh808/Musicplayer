@@ -10,8 +10,7 @@ class CLI
         display_songs
         song_selection
         display_song
-        # display #what is the difference between these two. 
-        # goodbye
+        
     end 
 
     def user_greeting
@@ -109,7 +108,7 @@ class CLI
             song_selection
             display_song
 
-        else input =
+        else 
             puts "Hmm.. Unfortunately, that was invalid.. Please try again..".red
             display
 
