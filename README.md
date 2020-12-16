@@ -22,7 +22,7 @@ Or install it yourself as:
     $ gem install MusicPlayer
 
 ## Usage
-Launching this program is easy, first step to get this going is to get clone this. How? https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository This would provide clear guidelines on how to do so. Once you do that, you will need to get an API from Spotify. https://www.spotify.com/us/ In order to do so, you would have to log in, go into the dashboard where there will be a client ID. It gets a little confusing, this article definitely help me retrieve the API. https://medium.com/swlh/how-to-access-spotifys-web-api-using-ruby-restclient-and-json-c04f8f8f23cd Afterwards, take your token, place it within the API class and you should be good to go! Type in your terminal ./bin/start and check it out! Have a great day! 
+Launching this program is easy, first step to get this going is to get clone this. How? https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository This would provide clear guidelines on how to do so. Once you do that, you will need to get an API from Spotify. https://www.spotify.com/us/ In order to do so, you would have to log in, go into the dashboard where there will be a client ID. It gets a little confusing, this article definitely help me retrieve the API. https://medium.com/swlh/how-to-access-spotifys-web-api-using-ruby-restclient-and-json-c04f8f8f23cd Afterwards, take your token, place it within the API class and you should be good to go! Type in your terminal ./bin/start and check it out how it works! Have a great day! 
 
 ## Development
 
