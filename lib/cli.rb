@@ -2,7 +2,7 @@ require 'pry'
 
 class CLI
 
-    PLAYLISTS = {"Christmas" => "4gxWLVXrcqc3SngxmwxxvH", "Top Hits" => "7v5KjTAPt7QbxC1nPMpJnk", "Country Hits" => "0n4C5STkf1aaVAavTxDqeM", "Workout" => "4E0tTH3iH1hGMLJ0MMo4dv", "Disney Hits" => "7AX97ePWr5Onf0kDazTeGt", "Classic Rock"=> "4fjIBk8D6FXUeRwlRNE2Zg", "The Feels" => "4gTqwWMa1YpyfIntqeoPHS"}
+    PLAYLISTS = {"Christmas" => "4gxWLVXrcqc3SngxmwxxvH", "Top Hits" => "7v5KjTAPt7QbxC1nPMpJnk", "Country Hits" => "0n4C5STkf1aaVAavTxDqeM", "Workout" => "4E0tTH3iH1hGMLJ0MMo4dv", "Disney Hits" => "7AX97ePWr5Onf0kDazTeGt", "Classic Rock"=> "4fjIBk8D6FXUeRwlRNE2Zg", "The Feels" => "4gTqwWMa1YpyfIntqeoPHS", "All-Nighter" => "3OFnEhqWwCidipa2TyChuU"}
     def start 
         user_greeting
         playlist_you_might_like
@@ -75,17 +75,16 @@ class CLI
     end
 
     def display_song
-        puts "Name: #{@song.name}".red
+        puts "Name: #{@song.name}".cyan
         puts "Artist: #{@song.artist.name}".green
-        puts "Album: #{@song.album["name"]}".blue
-        puts "Popularity: #{@song.popularity.to_s + "/100"}".red
-        puts "Genre: #{@song.artist.genres}".green
-        puts "Followers: #{@song.artist.followers}".blue
-        puts "Duration: #{@song.duration}".red
+        puts "Album: #{@song.album["name"]}".red
+        puts "Popularity: #{@song.popularity.to_s + "/100"}".blue
+        puts "Genre: #{@song.artist.genres}".cyan
+        puts "Followers: #{@song.artist.followers}".green
+        puts "Duration: #{@song.duration}mins".red
         puts ""
         display
     end
-
 
     def display
         puts "Type 'back' to go to song selection".blue

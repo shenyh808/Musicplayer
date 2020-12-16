@@ -37,7 +37,7 @@ class API
         playlist_hash["tracks"]["items"].collect do |song_hash|
         artist = find_artist_by_id(song_hash["track"]["artists"][0]["id"])
             
-            Song.find_or_create({id: song_hash["track"]["id"], name: song_hash["track"]["name"], popularity: song_hash["track"]["popularity"], playlist: playlist, duration: song_hash["track"]["duration_ms"], album: song_hash["track"]["album"], track_number: song_hash["track"]["track_number"], artist: artist})
+            Song.find_or_create({id: song_hash["track"]["id"], name: song_hash["track"]["name"], popularity: song_hash["track"]["popularity"], playlist: playlist, duration: song_hash["track"]["duration_ms"]/60000, album: song_hash["track"]["album"], track_number: song_hash["track"]["track_number"], artist: artist})
         end
     end
     
