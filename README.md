@@ -22,6 +22,7 @@ Or install it yourself as:
     $ gem install MusicPlayer
 
 ## Usage
+Launching this program is easy, first step to get this going is to get clone this. How? https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository This would provide clear guidelines on how to do so. Once you do that, you will need to get an API from Spotify. https://www.spotify.com/us/ In order to do so, you would have to log in, go into the dashboard where there will be a client ID. 
 
 TODO: Write usage instructions here
 git clone down to ./bin/start 
