@@ -7,7 +7,7 @@ class Song
     def initialize(hash)
         hash.each do |key, value|
             self.class.attr_accessor key
-            send("#{key}=", value)
+            self.send("#{key}=", value)
 
         end
         save 
