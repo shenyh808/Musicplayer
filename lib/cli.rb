@@ -33,7 +33,7 @@ class CLI
 
     end
 
-    def playlist_you_might_like
+    def playlist_you_might_like 
         PLAYLISTS.keys.each.with_index(1) {|key, i| puts "#{i}. #{key}"}
     end
 
@@ -75,6 +75,7 @@ class CLI
     end
 
     def display_song
+        puts ""
         puts "Name: #{@song.name}".cyan
         puts "Artist: #{@song.artist.name}".green
         puts "Album: #{@song.album["name"]}".red

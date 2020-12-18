@@ -2,7 +2,7 @@
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/MusicPlayer`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-I have created a Musicplayer with multiple playlist for all music lovers. Playlist that can uplifting, get you in your feels, heal, and most importantly... get you dancing like no one is watching.
+I have created a Musicplayer with multiple playlist for all music lovers. Playlist that can uplifting, get you in your feels, heal, and most importantly... get you dancing like no one is watching. Look for the playlist that fits you! 
 
 
 ## Installation
