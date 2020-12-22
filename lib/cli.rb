@@ -1,4 +1,3 @@
-require 'pry'
 
 class CLI
 
@@ -47,6 +46,7 @@ class CLI
             id = PLAYLISTS[name]
             @playlist = API.find_playlist_by_id(id)
             @songs = Song.all
+
         else 
             puts "Oops, an error has occurred... Please type a number between 1-#{PLAYLISTS.length}".red.bold
             playlist_selection #recursion 

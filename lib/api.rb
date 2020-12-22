@@ -4,8 +4,8 @@ class API
     
     
     def self.api_call(url)
+        token = "BQBS9g5NqW5dJtuSc7eDwv4cQZxH8KabzMbKBnDhd-E80JsTELcVAuNn7u-aL3I9vsXpRlB1dMDXJvK3SOcMv0Yc1L35uqcOqocD5cr7eWL_G3SMBeAMbic-vTGfamQuOrcbv4_ggJ09r-n-z-B1BuZjtqlmK85HMYH7AjA8fL8ZbfI"
         # token = ""
-        token = "BQCqMl-ITIoMu5yyMn3quZQ52etK1u4aWAXhyHZ51NQdEp_My8P0nPJ-eTBJotxYwP1P2rM8EtXAKxz1GTEsdlvu309WzBV6b42Cah8Cl7XrPcvuGlFukg0cSzumDlS9IFnJWC5s59uUAH5Urq0Agmt8-OsnIVLmwyA7walabGh9cKQ"
         uri = URI(url)
         req = Net::HTTP::Get.new(uri)
         req['Authorization'] = "Bearer #{token}" 
